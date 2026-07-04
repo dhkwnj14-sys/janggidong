@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="대구 달서구 장기동 근처 혼밥하기 좋은 음식점과 메뉴 가격을 한눈에 확인하세요.">
+  <title>장기동 혼밥 맛집 가이드 | 대구 달서구</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="logo">
+        <span class="logo-icon">🍚</span>
+        <span>장기동 혼밥</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#restaurants">맛집</a></li>
+        <li><a href="#tips">혼밥 팁</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="container hero-content">
+        <p class="hero-badge">대구 달서구 · 장기동</p>
+        <h1>혼자여도<br>편하게 먹을 수 있는<br><em>장기동 맛집</em></h1>
+        <p class="hero-desc">
+          먹자골목과 용산역 인근, 1인 식사가 가능한 음식점을 모았습니다.<br>
+          메뉴별 가격과 혼밥 포인트를 확인하고 오늘의 한 끼를 골라보세요.
+        </p>
+        <div class="hero-actions">
+          <a href="#restaurants" class="btn btn-primary">맛집 둘러보기</a>
+          <a href="#tips" class="btn btn-outline">혼밥 팁 보기</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>6</strong>
+            <span>추천 맛집</span>
+          </div>
+          <div class="stat">
+            <strong>7,000원~</strong>
+            <span>1인 식사 가격대</span>
+          </div>
+          <div class="stat">
+            <strong>4</strong>
+            <span>음식 카테고리</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">About</span>
+          <h2>왜 장기동인가요?</h2>
+        </div>
+        <div class="about-grid">
+          <article class="about-card">
+            <div class="about-icon">🚇</div>
+            <h3>교통이 편리해요</h3>
+            <p>용산역·이곡역 인근으로 출퇴근길, 점심, 저녁 어디서든 접근하기 좋습니다.</p>
+          </article>
+          <article class="about-card">
+            <div class="about-icon">🍖</div>
+            <h3>먹자골목이 있어요</h3>
+            <p>고기·국밥·쌈밥·일식까지 다양한 선택지가 한곳에 모여 있습니다.</p>
+          </article>
+          <article class="about-card">
+            <div class="about-icon">👤</div>
+            <h3>혼밥 친화적이에요</h3>
+            <p>1인 메뉴, 바 테이블, 셀프바 등 혼자 방문해도 부담 없는 곳을 골랐습니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="restaurants section" id="restaurants">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Restaurants</span>
+          <h2>장기동 혼밥 맛집</h2>
+          <p class="section-desc">카테고리별로 필터링하고, 메뉴와 가격을 확인하세요.</p>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="음식 카테고리 필터">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">전체</button>
+          <button class="filter-btn" data-filter="korean" role="tab" aria-selected="false">한식</button>
+          <button class="filter-btn" data-filter="meat" role="tab" aria-selected="false">고기</button>
+          <button class="filter-btn" data-filter="soup" role="tab" aria-selected="false">국밥</button>
+          <button class="filter-btn" data-filter="japanese" role="tab" aria-selected="false">일식</button>
+        </div>
+
+        <div class="search-box">
+          <input type="search" id="searchInput" placeholder="음식점 이름 또는 메뉴 검색..." aria-label="음식점 검색">
+        </div>
+
+        <div class="restaurant-grid" id="restaurantGrid"></div>
+
+        <p class="price-notice">※ 메뉴 가격은 참고용이며, 매장 상황에 따라 변동될 수 있습니다.</p>
+      </div>
+    </section>
+
+    <section class="tips section" id="tips">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Tips</span>
+          <h2>장기동 혼밥 꿀팁</h2>
+        </div>
+        <div class="tips-grid">
+          <article class="tip-card">
+            <span class="tip-num">01</span>
+            <h3>점심 vs 저녁</h3>
+            <p>국밥·쌈밥은 점심에, 고기·막창은 저녁·야식에 가성비가 좋은 편입니다.</p>
+          </article>
+          <article class="tip-card">
+            <span class="tip-num">02</span>
+            <h3>1인 메뉴 활용</h3>
+            <p>막창마을·청도시골밥상 등 1인 전용 메뉴가 있는 곳은 혼밥 부담이 적습니다.</p>
+          </article>
+          <article class="tip-card">
+            <span class="tip-num">03</span>
+            <h3>주차 확인</h3>
+            <p>먹자골목 일대는 주차장이 있지만 혼잡할 수 있으니 대중교통 이용을 추천합니다.</p>
+          </article>
+          <article class="tip-card">
+            <span class="tip-num">04</span>
+            <h3>브레이크타임</h3>
+            <p>일식·쌈밥집은 15~17시 브레이크타임이 있는 경우가 많으니 영업시간을 확인하세요.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-logo">🍚 장기동 혼밥 가이드</p>
+      <p>대구광역시 달서구 장기동 일대 · 혼밥 맛집 정보</p>
+      <p class="footer-copy">&copy; 2026 Janggi-dong Solo Dining Guide</p>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" aria-label="맨 위로">↑</button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

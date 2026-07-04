@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="대구 달서구 장기동 근처 혼밥하기 좋은 음식점과 메뉴 가격을 한눈에 확인하세요." name="description"/>
+<title>장기동 혼밥 맛집 가이드 | 대구 달서구</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    :root {
+      --bg-primary: #ffffff;
+      --text-main: #1a1a1a;
+      --text-muted: #4a4a4a;
+      --accent: #f97316; /* Orange accent */
+      --secondary: #10b981; /* Green accent */
+      --border-light: #f1f1f1;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      font-family: 'Noto+Sans+KR', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav {
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 85vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      margin-top: 70px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)), url('{{DATA:IMAGE:IMAGE_1}}');
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--text-main);
+      text-shadow: 0 2px 10px rgba(255,255,255,0.8);
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-desc {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+    }
+    .btn-outline {
+      border: 1px solid #e5e7eb;
+      background: white;
+      color: var(--text-main);
+    }
+    .btn-outline:hover {
+      background: #f9fafb;
+      border-color: #d1d5db;
+    }
+
+    /* Stats */
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat strong {
+      font-size: 1.75rem;
+      color: var(--text-main);
+    }
+    .stat span {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Sections Shared */
+    .section-header {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    .section-label {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.875rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .section-header h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+    }
+
+    /* About Cards */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .about-card {
+      padding: 2.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .about-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .about-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .about-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .about-card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Restaurants Section */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .filter-btn {
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      border: 1px solid var(--border-light);
+      background: white;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn.active {
+      background: var(--text-main);
+      color: white;
+      border-color: var(--text-main);
+    }
+
+    .search-box {
+      max-width: 500px;
+      margin: 0 auto 3rem;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 0.875rem 1.5rem;
+      border: 1px solid var(--border-light);
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .search-box input:focus {
+      border-color: var(--accent);
+    }
+
+    /* Tips */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .tip-card {
+      background: #fbfbfb;
+      padding: 2rem;
+      border-radius: 12px;
+      position: relative;
+    }
+    .tip-num {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 800;
+      color: #e5e7eb;
+    }
+    .tip-card h3 {
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+    .tip-card p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    .footer {
+      background: #f9fafb;
+      padding: 4rem 0;
+      border-top: 1px solid var(--border-light);
+      text-align: center;
+    }
+    .footer-logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .footer p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero-stats { gap: 1.5rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+<header class="header" id="header">
+<nav class="nav container">
+<a class="logo" href="#">
+<span class="logo-icon">🍚</span>
+<span>장기동 혼밥</span>
+</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#about">소개</a></li>
+<li><a href="#restaurants">맛집</a></li>
+<li><a href="#tips">혼밥 팁</a></li>
+</ul>
+<button aria-label="메뉴 열기" class="nav-toggle md:hidden" id="navToggle">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</nav>
+</header>
+<main>
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="container hero-content">
+<p class="hero-badge">대구 달서구 · 장기동</p>
+<h1>혼자여도<br/>편하게 먹을 수 있는<br/><em>장기동 맛집</em></h1>
+<p class="hero-desc">
+          먹자골목과 용산역 인근, 1인 식사가 가능한 음식점을 모았습니다.<br/>
+          메뉴별 가격과 혼밥 포인트를 확인하고 오늘의 한 끼를 골라보세요.
+        </p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#restaurants">맛집 둘러보기</a>
+<a class="btn btn-outline" href="#tips">혼밥 팁 보기</a>
+</div>
+<div class="hero-stats">
+<div class="stat">
+<strong>6</strong>
+<span>추천 맛집</span>
+</div>
+<div class="stat">
+<strong>7,000원~</strong>
+<span>1인 식사 가격대</span>
+</div>
+<div class="stat">
+<strong>4</strong>
+<span>음식 카테고리</span>
+</div>
+</div>
+</div>
+</section>
+<section class="about section" id="about">
+<div class="container">
+<div class="section-header">
+<span class="section-label">About</span>
+<h2>왜 장기동인가요?</h2>
+</div>
+<div class="about-grid">
+<article class="about-card">
+<div class="about-icon">🚇</div>
+<h3>교통이 편리해요</h3>
+<p>용산역·이곡역 인근으로 출퇴근길, 점심, 저녁 어디서든 접근하기 좋습니다.</p>
+</article>
+<article class="about-card">
+<div class="about-icon">🍖</div>
+<h3>먹자골목이 있어요</h3>
+<p>고기·국밥·쌈밥·일식까지 다양한 선택지가 한곳에 모여 있습니다.</p>
+</article>
+<article class="about-card">
+<div class="about-icon">👤</div>
+<h3>혼밥 친화적이에요</h3>
+<p>1인 메뉴, 바 테이블, 셀프바 등 혼자 방문해도 부담 없는 곳을 골랐습니다.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="restaurants section" id="restaurants">
+<div class="container">
+<div class="section-header">
+<span class="section-label">Restaurants</span>
+<h2>장기동 혼밥 맛집</h2>
+<p class="section-desc mt-2 text-slate-500">카테고리별로 필터링하고, 메뉴와 가격을 확인하세요.</p>
+</div>
+<div aria-label="음식 카테고리 필터" class="filter-bar" role="tablist">
+<button aria-selected="true" class="filter-btn active" data-filter="all" role="tab">전체</button>
+<button aria-selected="false" class="filter-btn" data-filter="korean" role="tab">한식</button>
+<button aria-selected="false" class="filter-btn" data-filter="meat" role="tab">고기</button>
+<button aria-selected="false" class="filter-btn" data-filter="soup" role="tab">국밥</button>
+<button aria-selected="false" class="filter-btn" data-filter="japanese" role="tab">일식</button>
+</div>
+<div class="search-box">
+<input aria-label="음식점 검색" id="searchInput" placeholder="음식점 이름 또는 메뉴 검색..." type="search"/>
+</div>
+<!-- Restaurant list would be dynamic here -->
+<div class="restaurant-grid grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="restaurantGrid">
+<!-- Sample Card to show UI -->
+<div class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="h-48 bg-gray-100"></div>
+<div class="p-6">
+<span class="text-xs font-bold text-orange-500 mb-2 block">국밥</span>
+<h4 class="text-xl font-bold mb-2">원조할매국밥</h4>
+<p class="text-gray-600 text-sm mb-4">깊은 사골 육수의 진한 맛을 느낄 수 있는 혼밥 성지</p>
+<div class="flex justify-between items-center border-t pt-4">
+<span class="font-bold">8,000원~</span>
+<span class="text-xs bg-gray-50 px-2 py-1 rounded text-gray-500">1인 테이블 완비</span>
+</div>
+</div>
+</div>
+</div>
+<p class="price-notice text-center mt-12 text-sm text-gray-400">※ 메뉴 가격은 참고용이며, 매장 상황에 따라 변동될 수 있습니다.</p>
+</div>
+</section>
+<section class="tips section" id="tips">
+<div class="container">
+<div class="section-header">
+<span class="section-label">Tips</span>
+<h2>장기동 혼밥 꿀팁</h2>
+</div>
+<div class="tips-grid">
+<article class="tip-card">
+<span class="tip-num">01</span>
+<h3>점심 vs 저녁</h3>
+<p>국밥·쌈밥은 점심에, 고기·막창은 저녁·야식에 가성비가 좋은 편입니다.</p>
+</article>
+<article class="tip-card">
+<span class="tip-num">02</span>
+<h3>1인 메뉴 활용</h3>
+<p>막창마을·청도시골밥상 등 1인 전용 메뉴가 있는 곳은 혼밥 부담이 적습니다.</p>
+</article>
+<article class="tip-card">
+<span class="tip-num">03</span>
+<h3>주차 확인</h3>
+<p>먹자골목 일대는 주차장이 있지만 혼잡할 수 있으니 대중교통 이용을 추천합니다.</p>
+</article>
+<article class="tip-card">
+<span class="tip-num">04</span>
+<h3>브레이크타임</h3>
+<p>일식·쌈밥집은 15~17시 브레이크타임이 있는 경우가 많으니 영업시간을 확인하세요.</p>
+</article>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container footer-inner">
+<p class="footer-logo">🍚 장기동 혼밥 가이드</p>
+<p>대구광역시 달서구 장기동 일대 · 혼밥 맛집 정보</p>
+<p class="footer-copy">© 2026 Janggi-dong Solo Dining Guide</p>
+</div>
+</footer>
+<button aria-label="맨 위로" class="fixed bottom-6 right-6 bg-white border border-gray-200 w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-gray-50 transition-colors" id="scrollTop">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 10l7-7m0 0l7 7m-7-7v18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<script src="js/main.js"></script>
+</body></html>
